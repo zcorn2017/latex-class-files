@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mynote}[2023/3/1 Class file for note-taking]
+\ProvidesClass{mynote}[2023/03/01 Class file for note-taking]
 
 % Set the course name, course year and the latest date
 \RequirePackage{xkeyval}
@@ -31,6 +31,12 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 \LoadClass{article}
+
+
+% update @ 2021
+%
+
+
 \input{commands.tex}
 
 
@@ -38,7 +44,7 @@
 % Later in the document \ldots we access the variables again:
 % \MyTitle, \MyAuthor, and \MyDate.	
 \RequirePackage{authoraftertitle}
-\title{MAT2040: Linear Algebra}
+\title{\doccoursename}
 \author{ZHOU, Yuming}
 \newcommand{\COURSE}{\doccoursename}
 \newcommand{\YEAR}{\doccourseyear}
@@ -46,10 +52,6 @@
 
 
 
-% update @ 2021
-%
-% this function resolves error of repeated commands
-\newcommand*{\renameenviron}[1]{\expandafter\let\csname renamed-#1\expandafter\endcsname\csname #1\endcsname\expandafter\let\csname endrenamed-#1\expandafter\endcsname\csname end#1\endcsname\expandafter\let\csname #1\endcsname\relax\expandafter\let\csname end#1\endcsname\relax}
 
 
 
@@ -108,6 +110,8 @@ Lecture #1:
 \markboth{Lecture #1}{Lecture #1}
 }
 
+% --------------------------------------------------------------------
+
 \newlength{\hwklen}
 \newcommand{\hwk}[4]{%
 \clearpage
@@ -131,7 +135,7 @@ Assignment #1:
 \end{minipage}
 \par}
 \vspace{4mm}
-{\itshape Author: #3\hfill Date: #4\par}
+{\itshape Author: \text{#3}\hfill Date: #4\par}
 \vspace{2mm}
 }%
 }
@@ -140,18 +144,54 @@ Assignment #1:
 }
 
 
+% --------------------------------------------------------------------
+
+
+
+\newlength{\notelen}
+\newcommand{\newnote}[4]{%
+\clearpage
+\thispagestyle{plain}
+\stepcounter{lecnum} % resets every associated counter
+\setcounter{lecnum}{#1}%
+\begin{center}
+\framebox{%
+\phantomsection % toc locate to section
+\addcontentsline{toc}{part}{\thelecnum\hspace{2em}\space#2}
+\parbox[t]{\linewidth-0.5mm}{%
+\vspace{2mm}
+{\bfseries\COURSE \hfill \YEAR \par}
+\vspace{2mm}
+{\Large %Lecture #1: #2
+\settowidth{\notelen}{Note999:}
+\begin{minipage}[t]{\notelen}
+Note #1:
+\end{minipage} \begin{minipage}[t]{\linewidth-2mm-\notelen}
+#2
+\end{minipage}
+\par}
+\vspace{4mm}
+{\itshape Author: \text{#3}\hfill Date: #4\par}
+\vspace{2mm}
+}%
+}
+\end{center}
+\markboth{Note #1}{Note #1}
+}
+
+
+
 
 % E.g and other macros
 \newlength{\mywidth}
 
 \newcounter{Egnum}[lecnum]
-\newenvironment{Eg}{\refstepcounter{Egnum}\par\medskip \noindent \textit{e.g.\theEgnum.} \color{eggray} \rmfamily } {\medskip}
+\newenvironment{Eg}{\refstepcounter{Egnum}\par\medskip \noindent \textit{e.g. (\theEgnum)} \color{eggray} \rmfamily } {\medskip}
 \newenvironment{Eg*}{\par\medskip \noindent \textit{e.g.} \color{eggray} \rmfamily } {\medskip}
 \newenvironment{QaA}{\par\medskip \noindent \textit{Q\&A.} \color{eggray} \rmfamily } {\medskip}
 \newcommand{\eg}[1]{{\color{eggray}(}{\textit{e.g.} \color{eggray} #1)}}
 \newcommand{\ie}[1]{{\color{eggray}(}{\textit{i.e.} \color{eggray} #1)}}
 \newcommand{\br}[1]{(#1)}
-
 
 
 % ---------------------------------------------------------------------------------

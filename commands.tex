@@ -1,6 +1,11 @@
 
 % ----- Packages --------------------------------------------------------------
 
+\RequirePackage[cache=false]{minted} % minted setup to include code
+%\renewcommand{\MintedPygmentize}{/home/jpl/anaconda3/bin/pygmentize}
+\setminted[python]{linenos, tabsize=2, breaklines}
+
+
 \RequirePackage{geometry} % page margin
 \RequirePackage{indentfirst}
 
@@ -15,7 +20,6 @@
 %\newcommand{\gp}[1]{\glspl{#1}}
 
 
-\RequirePackage{cases}
 
 % Better fonts with accents
 \RequirePackage[T1]{fontenc}
@@ -112,14 +116,6 @@ urlcolor={blue!80!black}
 
 
 
-% \RequirePackage{courier} % font
-% \RequirePackage{listings} % font for code
-% \lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
-% \lstset{framextopmargin=50pt,frame=bottomline}
-% \RequirePackage[cache=false]{minted} % minted setup to include code
-%\renewcommand{\MintedPygmentize}{/home/jpl/anaconda3/bin/pygmentize}
-% \renewcommand{\MintedPygmentize}{/Users/jacky/anaconda3/bin/pygmentize}
-% \setminted[python]{linenos, tabsize=2, breaklines}
 
 
 
@@ -149,17 +145,41 @@ urlcolor={blue!80!black}
 % SI units
 \RequirePackage{siunitx}
 
+% this function resolves error of repeated commands
+%\newcommand*{\renameenviron}[1]{\expandafter\let\csname renamed-#1\expandafter\endcsname\csname #1\endcsname\expandafter\let\csname endrenamed-#1\expandafter\endcsname\csname end#1\endcsname\expandafter\let\csname #1\endcsname\relax\expandafter\let\csname end#1\endcsname\relax}
 
 
+\newcommand*{\renameenviron}[1]{%
+  \expandafter\let\csname exam-#1\expandafter\endcsname
+      \csname #1\endcsname
+  \expandafter\let\csname endexam-#1\expandafter\endcsname
+      \csname end#1\endcsname
+  \expandafter\let\csname #1\endcsname\relax
+  \expandafter\let\csname end#1\endcsname\relax
+}
+\renameenviron{framed}
+\renameenviron{shaded}
+\renameenviron{leftbar}
 
 % Thmbox
 \RequirePackage{thmbox}
-\newtheorem[L]{thm}{Theorem}[section]
-\newtheorem{cor}[thm]{Corollary}
+%\newtheorem[L]{theorem}{Theorem}[section]
+%\newtheorem{theorem}{Theorem}[section]
+%This is the example presented in the introduction but it has the additional parameter [section] that restarts the theorem counter at every new section.
+%\newtheorem{corollary}{Corollary}[theorem]
+%An environment called corollary is created, the counter of this new environment will be reset every time a new theorem environment is used.
+%\newtheorem{lemma}[theorem]{Lemma}
+%In this case, the even though a new environment called lemma is created, it will use the same counter as the theorem environment.
+%\newtheorem*{remark}{Remark}
+%\newtheorem{definition}{Definition}[section]
+%\newtheorem*{remark}{Remark}
+\newtheorem[L]{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem[M]{definition}{Definition}[section]
 
 
-
-
+% Text Boxes
+\RequirePackage[]{mdframed}
 
 
 % Fonts Settings
@@ -179,6 +199,7 @@ urlcolor={blue!80!black}
 \RequirePackage{centernot}
 
 
+\RequirePackage{cases}
 
 
 % DEFINE ADDITIONAL MACROS
@@ -294,5 +315,9 @@ urlcolor={blue!80!black}
   \ooalign{\hss\makebox[0pt]{\fcolorbox{green!30}{red!40}{$#1$}}\hss\cr\phantom{$#1$}}%
 } % Highlight the element
 
-
+\newcommand{\undertext}[2] {$\underbrace{\textrm{#1}}_{\textrm{#2}}$}
 % -----------------------------------------------------------------------------
+
+
+
+
