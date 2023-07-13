@@ -69,6 +69,7 @@
 % to the lecture number.
 %
 \newcounter{lecnum}
+\setcounter{lecnum}{0}
 \counterwithin{section}{lecnum}
 \counterwithin{equation}{lecnum}
 \counterwithin{figure}{lecnum}
@@ -79,15 +80,15 @@
 \pagestyle{myheadings}
 
 \newlength{\leclen}
-\newcommand{\lecture}[4]{%
+\newcommand{\newlec}[3]{%
 \clearpage
 % \thispagestyle{plain}
 \stepcounter{lecnum} % resets every associated counter
-\setcounter{lecnum}{#1}%
+% \setcounter{lecnum}{#1}%
 \begin{center}
 \framebox{%
 \phantomsection % toc locate to section
-\addcontentsline{toc}{part}{\thelecnum\hspace{2em}\space#2}
+\addcontentsline{toc}{part}{\makebox[6em][l]{Lecture}\makebox[1em][r]{\thelecnum:}\hspace{2em}\space#1}
 \parbox[t]{\linewidth-0.5mm}{%
 \vspace{2mm}
 {\bfseries\COURSE \hfill \YEAR \par}
@@ -95,32 +96,42 @@
 {\Large %Lecture #1: #2
 \settowidth{\leclen}{Lecture999:}
 \begin{minipage}[t]{\leclen}
-Lecture #1:
+Lecture \thelecnum:
 \end{minipage} \begin{minipage}[t]{\linewidth-2mm-\leclen}
-#2
+#1
 \end{minipage}
 \par}
 \vspace{4mm}
-{\itshape Lecturer: #3\hfill Date: #4\par}
+{\itshape Lecturer: #2\hfill Date: #3\par}
 \vspace{2mm}
 }%
 }
 \end{center}
-\markboth{Lecture #1}{Lecture #1}
+\markboth{Lecture \thelecnum}{Lecture \thelecnum}
 }
 
 % --------------------------------------------------------------------
 
+\newcounter{hwknum}
+\setcounter{hwknum}{0}
+\counterwithin{section}{hwknum}
+\counterwithin{equation}{hwknum}
+\counterwithin{figure}{hwknum}
+\counterwithin{table}{hwknum}
+\counterwithin{algorithm}{hwknum}
+\counterwithin{footnote}{hwknum}
+
+
 \newlength{\hwklen}
-\newcommand{\hwk}[4]{%
+\newcommand{\newhwk}[3]{%
 \clearpage
 % \thispagestyle{plain}
-\stepcounter{lecnum} % resets every associated counter
-\setcounter{lecnum}{#1}%
+\stepcounter{hwknum} % resets every associated counter
+% \setcounter{hwknum}{#1}%
 \begin{center}
 \framebox{%
 \phantomsection % toc locate to section
-\addcontentsline{toc}{part}{\thelecnum\hspace{2em}\space#2}
+\addcontentsline{toc}{part}{\makebox[6em][l]{Assginment}\makebox[1em][r]{\thehwknum:}\hspace{2em}\space#1}
 \parbox[t]{\linewidth-0.5mm}{%
 \vspace{2mm}
 {\bfseries\COURSE \hfill \YEAR \par}
@@ -128,35 +139,44 @@ Lecture #1:
 {\Large %Lecture #1: #2
 \settowidth{\hwklen}{Assignment999:}
 \begin{minipage}[t]{\hwklen}
-Assignment #1:
+Assignment \thehwknum:
 \end{minipage} \begin{minipage}[t]{\linewidth-2mm-\hwklen}
-#2
+#1
 \end{minipage}
 \par}
 \vspace{4mm}
-{\itshape Author: \text{#3}\hfill Date: #4\par}
+{\itshape Author: \text{#2}\hfill Date: #3\par}
 \vspace{2mm}
 }%
 }
 \end{center}
-\markboth{Assignment #1}{Assignment #1}
+\markboth{Assignment \thehwknum}{Assignment \thehwknum}
 }
 
 
 % --------------------------------------------------------------------
 
 
+\newcounter{notenum}
+\setcounter{notenum}{0}
+\counterwithin{section}{notenum}
+\counterwithin{equation}{notenum}
+\counterwithin{figure}{notenum}
+\counterwithin{table}{notenum}
+\counterwithin{algorithm}{notenum}
+\counterwithin{footnote}{notenum}
+
 
 \newlength{\notelen}
-\newcommand{\newnote}[4]{%
+\newcommand{\newnote}[3]{%
 \clearpage
 % \thispagestyle{plain}
-\stepcounter{lecnum} % resets every associated counter
-\setcounter{lecnum}{#1}%
+\stepcounter{notenum} % resets every associated counter
+% \setcounter{notenum}{#1}%
 \begin{center}
 \framebox{%
 \phantomsection % toc locate to section
-\addcontentsline{toc}{part}{\thelecnum\hspace{2em}\space#2}
+\addcontentsline{toc}{part}{\makebox[6em][l]{Note}\makebox[1em][r]{\thenotenum:}\hspace{2em}\space#1}
 \parbox[t]{\linewidth-0.5mm}{%
 \vspace{2mm}
 {\bfseries\COURSE \hfill \YEAR \par}
@@ -164,18 +184,18 @@ Assignment #1:
 {\Large %Lecture #1: #2
 \settowidth{\notelen}{Note999:}
 \begin{minipage}[t]{\notelen}
-Note #1:
+Note \thenotenum:
 \end{minipage} \begin{minipage}[t]{\linewidth-2mm-\notelen}
-#2
+#1
 \end{minipage}
 \par}
 \vspace{4mm}
-{\itshape Author: \text{#3}\hfill Date: #4\par}
+{\itshape Author: \text{#2}\hfill Date: #3\par}
 \vspace{2mm}
 }%
 }
 \end{center}
-\markboth{Note #1}{Note #1}
+\markboth{Note \thenotenum}{Note \thenotenum}
 }
 
 
