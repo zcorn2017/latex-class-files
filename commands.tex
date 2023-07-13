@@ -1,7 +1,7 @@
 
 % ----- Packages --------------------------------------------------------------
 
-\RequirePackage[cache=false]{minted} % minted setup to include code
+\RequirePackage[outputdir=build, cache=false]{minted} % minted setup to include code
 %\renewcommand{\MintedPygmentize}{/home/jpl/anaconda3/bin/pygmentize}
 \setminted[python]{linenos, tabsize=2, breaklines}
 
@@ -43,11 +43,13 @@
 
 % Nice images, figures, and listings
 \RequirePackage{grffile}
-\RequirePackage[all]{xy}
+% \RequirePackage[all]{xy}
 \RequirePackage{wrapfig}
 \RequirePackage{fancyvrb}
 \RequirePackage{listings}
 
+% For better itemise using \1 \2 \3 \ldots
+\RequirePackage{outlines}
 
 \RequirePackage{dsfont} % \mathds
 \RequirePackage{xcolor}
@@ -186,7 +188,9 @@ urlcolor={blue!80!black}
 \RequirePackage{fontspec}
 %\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
 %\setmainfont{OpenDyslexic3}
-\setmainfont{Atkinson Hyperlegible}
+% \setmainfont{Atkinson Hyperlegible}
+
+\setmainfont{Arial}
 \setmonofont{Meslo LG L for Powerline}
 %\setmonofont{JetBrains Mono}[Contextuals = Alternate,Ligatures = TeX]
 %\crefname{questionCounter}{Good}{Note}
@@ -283,8 +287,8 @@ urlcolor={blue!80!black}
 %\newcommand{\algorithmSplit}[1]{\end{algorithmic} #1 \begin{algorithmic}[1]} % OLD TO BE DELETED
 \newcommand{\idx}[1]{^{(#1)}} % superscript
 
-% Linear Algebra
-\renewcommand{\Row}[1]{R_{#1}} % row
+% Linear Algebra you may change renewcommand to newcommand in Row
+\newcommand{\Row}[1]{R_{#1}} % row
 \newcommand{\x}[1]{x_{#1}} % x unknown
 \newenvironment{amatrix}[1]{%
   \left[\begin{array}{@{}*{#1}{c}|c@{}}

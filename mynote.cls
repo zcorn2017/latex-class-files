@@ -6,6 +6,8 @@
 \def\doccoursename{BIM3001: Bioinformatics}
 \def\doccourseyear{2023 Spring}
 \def\docdate{\today}
+\newcommand{\email}{\href{mailto://yumingzhou@link.cuhk.edu.cn}{yumingzhou@link.cuhk.edu.cn}}
+
 
 \define@key{mynote.cls}{course}[BIM3001: Bioinformatics]{%
   \def\doccoursename{#1}%
@@ -26,6 +28,14 @@
 \chead[\doccoursename]{\doccoursename}%
 \rhead[]{\author}%
 \pagestyle{fancy}%
+\fancyhead{} % clear all header fields
+\fancyhead[C]{\textbf{\MyAuthor} (\email)}
+\fancyfoot{} % clear all footer fields
+\fancyhead[L]{\textbf{\MyTitle}}
+
+\fancyhead[R]{\textbf{\doccourseyear}}
+\fancyfoot[C]{\thepage}
+% \fancyfoot[CO,RE]{}
 }
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
@@ -33,8 +43,7 @@
 \LoadClass{article}
 
 
-% update @ 2021
-%
+
 
 
 \input{commands.tex}
@@ -48,16 +57,6 @@
 \author{ZHOU, Yuming}
 \newcommand{\COURSE}{\doccoursename}
 \newcommand{\YEAR}{\doccourseyear}
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -82,7 +81,7 @@
 \newlength{\leclen}
 \newcommand{\lecture}[4]{%
 \clearpage
-\thispagestyle{plain}
+% \thispagestyle{plain}
 \stepcounter{lecnum} % resets every associated counter
 \setcounter{lecnum}{#1}%
 \begin{center}
@@ -115,7 +114,7 @@ Lecture #1:
 \newlength{\hwklen}
 \newcommand{\hwk}[4]{%
 \clearpage
-\thispagestyle{plain}
+% \thispagestyle{plain}
 \stepcounter{lecnum} % resets every associated counter
 \setcounter{lecnum}{#1}%
 \begin{center}
@@ -151,7 +150,7 @@ Assignment #1:
 \newlength{\notelen}
 \newcommand{\newnote}[4]{%
 \clearpage
-\thispagestyle{plain}
+% \thispagestyle{plain}
 \stepcounter{lecnum} % resets every associated counter
 \setcounter{lecnum}{#1}%
 \begin{center}
@@ -194,5 +193,6 @@ Note #1:
 \newcommand{\br}[1]{(#1)}
 
 
-% ---------------------------------------------------------------------------------
+%% ---------------------------------------------------------------------------------
+
 
